@@ -5,15 +5,21 @@ import {useDispatch} from "react-redux";
 import {useState} from 'react'
 
 function App() {
+  const [feeling, setFeeling] = useState(0);
   const dispatch = useDispatch();
 
+  const handleFeelingInput=(e)=>{
+    setFeeling(e.target.value);
+  }
 
-  // const addFeelingRatingToStore = (e) =>{
-  //   dispatch({
-  //     type: `STORE_FEELING_RATING`,
-  //     payload: 
-  //   })
-  // }
+  const handleNextSubmit =(e)=>{
+    e.preventDefault();
+
+    dispatch({
+      type: `SET_FEELING`,
+      payload: feeling
+    })
+  }
 
   return (
     <div className='App'>
@@ -22,10 +28,11 @@ function App() {
         <h4>Don't forget it!</h4>
       </header>
       <h1>How are you feeling today?</h1>
-      {/* FORM --> on submit */}
-      <form onSubmit={addFeelingRatingToStore}>
+
+      <form onSubmit={handleNextSubmit}>
         <input
-        onChange={(e)=> setFeedbackInput(e.target.value)}
+        value={feeling}
+        onChange={handleFeelingInput}
         type="number"
         />
         <button>NEXT</button>
