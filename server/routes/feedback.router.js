@@ -6,6 +6,9 @@ const pool = require('../modules/pool')
 
 // TODO: This route adds a new feedback entry
 router.post('/', (req, res) => {
+    const inputToAdd = req.body;
+    
+
 
 })
 
