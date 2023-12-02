@@ -38,11 +38,10 @@ function App() {
       <Route exact path="/review">
         <Review />
       </Route>
-      
+
         </Router>
     </div>
   );
 }
-
 
 export default App;

@@ -34,7 +34,7 @@ function Understanding(){
             <input
             value={understanding}
             onChange={handleUnderstandingInput}
-            type="number" />
+            type="number"/>
           <button>NEXT</button>
           </form>
         </div>

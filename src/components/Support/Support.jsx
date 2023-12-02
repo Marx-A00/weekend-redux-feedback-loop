@@ -1,22 +1,41 @@
-import { HashRouter as Router,Route,Provider,Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 
 function Support(){
 
     const history = useHistory();
 
+    const [support,setSupport] = useState(0);
+    const dispatch = useDispatch();
 
-    const pushToComments = ()=>{
+    const handleSupportInput = (e)=>{
+        setSupport(e.target.value);
+    }
+
+    const handleNextSubmit = (e)=>{
+        e.preventDefault();
+
+        dispatch({
+            type:`SET_SUPPORT`,
+            payload: support
+
+        })
         history.push("/comments");
     }
 
     return (
         <div>
         <h1>How well are you being supported?</h1>
-          <button onClick={pushToComments}>NEXT</button>
-       
-        </div>
+        <form onSubmit={handleNextSubmit}>
+            <input
+            value = {support}
+            onChange={handleSupportInput}
+            type="number"/>
+            <button>NEXT</button>
+        </form>
+    </div>
     )
 }
 
