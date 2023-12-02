@@ -1,46 +1,48 @@
 import React from 'react';
-import axios from 'axios';
+import { HashRouter as Router,Route} from "react-router-dom";
 import './App.css';
-import {useDispatch} from "react-redux";
-import {useState} from 'react'
+import Feeling from "../Feeling/Feeling"
+import Understanding from "../Understanding/Understanding"
+import Support from "../Support/Support"
+import Comments from "../Comments/Comments"
+import Review from '../Review/Review';
 
 function App() {
-  const [feeling, setFeeling] = useState(0);
-  const dispatch = useDispatch();
-
-  const handleFeelingInput=(e)=>{
-    setFeeling(e.target.value);
-  }
-
-  const handleNextSubmit =(e)=>{
-    e.preventDefault();
-
-    dispatch({
-      type: `SET_FEELING`,
-      payload: feeling
-    })
-  }
 
   return (
+
     <div className='App'>
+      <Router>
       <header className='App-header'>
         <h1 className='App-title'>Feedback!</h1>
         <h4>Don't forget it!</h4>
       </header>
-      <h1>How are you feeling today?</h1>
 
-      <form onSubmit={handleNextSubmit}>
-        <input
-        value={feeling}
-        onChange={handleFeelingInput}
-        type="number"
-        />
-        <button>NEXT</button>
-        </form>
+      <Route exact path="/">
+      <Feeling />
+      </Route>
+
+      <Route exact path="/understanding">
+        <Understanding />
+      </Route>
+
+
+      <Route exact path="/support">
+        <Support />
+      </Route>
+
+      <Route exact path="/comments">
+        <Comments />
+      </Route>
+
+      <Route exact path="/review">
+        <Review />
+      </Route>
+      
+        </Router>
     </div>
   );
 }
 
-// input with form submission?
 
 export default App;
