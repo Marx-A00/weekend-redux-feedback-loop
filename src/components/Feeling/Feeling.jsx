@@ -29,11 +29,12 @@ function Feeling(){
         <h1>How are you feeling today?</h1>
         <form onSubmit={handleNextSubmit}>
           <input
+          data-testid="input"
           value={feeling}
           onChange={handleFeelingInput}
           type="number"
           />
-        <button>NEXT</button>
+        <button data-testid="next" >NEXT</button>
           </form>
           </div>
     )

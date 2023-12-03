@@ -22,6 +22,9 @@ const ratingInput = (state ={},action)=>{
         return {...state,commentsInputToAdd};
 
     }
+    else if (action.type === `RESET`){
+        return {}
+    }
     return state;
 }
 

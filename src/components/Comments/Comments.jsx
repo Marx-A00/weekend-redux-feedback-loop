@@ -25,10 +25,11 @@ function Comments(){
             <h1>Any Comments you want to leave?</h1>
             <form onSubmit={handleNextSubmit}>
                 <input
+                data-testid="input"
                 value={comments}
                 onChange={handleCommentsInput}
                 type="text"/>
-                <button>NEXT</button>
+                <button data-testid="next" >NEXT</button>
                 </form>
         </div>
     )

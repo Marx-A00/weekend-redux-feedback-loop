@@ -32,10 +32,11 @@ function Understanding(){
         <h1>How is your understanding?</h1>
         <form onSubmit={handleNextSubmit}>
             <input
+            data-testid="input"
             value={understanding}
             onChange={handleUnderstandingInput}
             type="number"/>
-          <button>NEXT</button>
+          <button data-testid="next">NEXT</button>
           </form>
         </div>
     )

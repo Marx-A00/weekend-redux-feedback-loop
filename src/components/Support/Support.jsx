@@ -30,10 +30,11 @@ function Support(){
         <h1>How well are you being supported?</h1>
         <form onSubmit={handleNextSubmit}>
             <input
+            data-testid="input"
             value = {support}
             onChange={handleSupportInput}
             type="number"/>
-            <button>NEXT</button>
+            <button data-testid="next" >NEXT</button>
         </form>
     </div>
     )
