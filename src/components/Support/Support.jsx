@@ -1,43 +1,69 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import { CardContent } from "@mui/material";
 
+function Support() {
+  const history = useHistory();
 
-function Support(){
+  const [support, setSupport] = useState(0);
+  const dispatch = useDispatch();
 
-    const history = useHistory();
+  const handleSupportInput = (e) => {
+    setSupport(e.target.value);
+  };
 
-    const [support,setSupport] = useState(0);
-    const dispatch = useDispatch();
+  const handleNextSubmit = (e) => {
+    e.preventDefault();
 
-    const handleSupportInput = (e)=>{
-        setSupport(e.target.value);
-    }
+    dispatch({
+      type: `SET_SUPPORT`,
+      payload: support,
+    });
+    history.push("/comments");
+  };
 
-    const handleNextSubmit = (e)=>{
-        e.preventDefault();
-
-        dispatch({
-            type:`SET_SUPPORT`,
-            payload: support
-
-        })
-        history.push("/comments");
-    }
-
-    return (
-        <div>
+  return (
+    <Card>
+      <CardContent>
         <h1>How well are you being supported?</h1>
-        <form onSubmit={handleNextSubmit}>
-            <input
-            data-testid="input"
-            value = {support}
+
+        <Box
+          component="form"
+          sx={{
+            "& > :not(style)": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField
+            helperText="enter a number 1-5"
+            type="number"
+            value={support}
             onChange={handleSupportInput}
-            type="number"/>
-            <button data-testid="next" >NEXT</button>
-        </form>
-    </div>
-    )
+            id="standard-basic"
+            label="supported?"
+            variant="standard"
+          />
+        </Box>
+
+        <Button
+          disableElevation
+          onClick={handleNextSubmit}
+          variant="contained"
+          data-testid="next"
+          color="primary"
+        >
+          NEXT
+        </Button>
+      </CardContent>
+    </Card>
+  );
 }
 
 export default Support;

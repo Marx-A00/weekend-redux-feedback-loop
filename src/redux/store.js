@@ -2,6 +2,7 @@ import {createStore, combineReducers,applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 
 const ratingInput = (state ={},action)=>{
+    
     if(action.type === `SET_FEELING`){
         const feelingInputToAdd = action.payload;
         return {...state,feelingInputToAdd};
